@@ -1,0 +1,57 @@
+# Run `xcodegen generate` in this folder to make ArtWidgetPhone.xcodeproj.
+name: ArtWidgetPhone
+options:
+  bundleIdPrefix: com.yashahlawat
+  deploymentTarget:
+    iOS: "18.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    CODE_SIGN_STYLE: Automatic
+    TARGETED_DEVICE_FAMILY: "1"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+targets:
+  ArtWidgetPhone:
+    type: application
+    platform: iOS
+    sources:
+      - App
+      - path: ../Sources/ArtWidget/AICClient.swift
+      - path: ../Sources/ArtWidget/DailyPick.swift
+      - path: ../Sources/ArtWidget/Facts.swift
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: Art Widget
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        CFBundleURLTypes:
+          - CFBundleURLName: com.yashahlawat.artwidget.phone
+            CFBundleURLSchemes:
+              - artwidget
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.yashahlawat.artwidget.phone
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    dependencies:
+      - target: ArtWidgetExtension
+  ArtWidgetExtension:
+    type: app-extension
+    platform: iOS
+    sources:
+      - Widget
+      - path: ../Sources/ArtWidget/AICClient.swift
+      - path: ../Sources/ArtWidget/DailyPick.swift
+    info:
+      path: Widget/Info.plist
+      properties:
+        CFBundleDisplayName: Art Widget
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.yashahlawat.artwidget.phone.widget

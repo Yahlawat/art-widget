@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-26
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build and validate desktop app and login agent
+        run: ./install.sh --build-only
+      - name: Install XcodeGen
+        run: brew install xcodegen
+      - name: Build iPhone app and WidgetKit extension
+        working-directory: ios
+        run: |
+          xcodegen generate
+          xcodebuild -project ArtWidgetPhone.xcodeproj -scheme ArtWidgetPhone \
+            -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build -quiet
