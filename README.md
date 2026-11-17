@@ -11,6 +11,7 @@ A daily painting from the Art Institute of Chicago, with notes from the museum. 
 - A Mac running macOS 26 or later (Apple menu → About This Mac).
 - About 10 minutes, mostly waiting.
 - No account or payment needed.
+- You do not need Xcode. The Mac app only needs Apple's free Command Line Tools (step 2). Xcode is only for the iPhone version, below.
 
 **Steps**
 
@@ -81,7 +82,18 @@ This stops the app and moves it out of your Applications folder into `~/art-widg
 
 ## iPhone
 
-The iPhone version is for developers: you build it yourself in Xcode and it needs a free Apple ID. It isn't a one-click install. A Home Screen widget in `ios/`, medium or large: the same daily painting, ← → buttons, and a tap opens the museum's notes in the app. Pick the size by swiping in the widget gallery. Requires Xcode, [XcodeGen](https://github.com/yonaskolb/XcodeGen), and iOS 18 or later. Install XcodeGen with `brew install xcodegen` if you use Homebrew.
+A Home Screen widget in `ios/`, medium or large: the same daily painting, ← → buttons, and a tap opens the museum's notes in the app. Pick the size by swiping in the widget gallery.
+
+This is the only part that needs Xcode. It is for developers: you build it yourself and it isn't a one-click install.
+
+**You need**
+
+- A Mac with [Xcode](https://developer.apple.com/xcode/) installed (free from the App Store, a large download)
+- [XcodeGen](https://github.com/yonaskolb/XcodeGen): `brew install xcodegen` if you use Homebrew
+- A free Apple ID
+- An iPhone on iOS 18 or later
+
+**Steps**
 
 ```
 cd art-widget/ios
