@@ -6,13 +6,48 @@ A daily painting from the Art Institute of Chicago, with notes from the museum. 
 
 ## Install on macOS
 
-Requires macOS 26 or later and Apple's Command Line Tools. If you haven't installed the tools, run `xcode-select --install` and finish the prompt first.
+**Before you start**
+
+- A Mac running macOS 26 or later (Apple menu → About This Mac).
+- About 10 minutes, mostly waiting.
+- No account or payment needed.
+
+**Steps**
+
+1. Open Terminal: press Cmd+Space, type `Terminal`, press Return.
+2. Install Apple's Command Line Tools (the free tools that build the app). Paste this and press Return:
+
+   ```sh
+   xcode-select --install
+   ```
+
+   A window opens. Click Install and wait for it to finish (a few GB, can take a while). If it says the tools are already installed, go to step 3.
+3. Paste this and press Return. It downloads the app into your home folder, builds it, and starts it:
+
+   ```sh
+   cd ~ && git clone --branch v1.0.0 --depth 1 https://github.com/Yahlawat/art-widget.git && ./art-widget/install.sh
+   ```
+
+**What you'll see**
+
+A lot of scrolling text for a minute or two. That's normal. At the end it prints `Installed ... and started it`, and a painting card appears on your desktop. The app starts at login from now on.
+
+**Uninstall**
+
+Paste this into Terminal:
 
 ```sh
-git clone --branch v1.0.0 --depth 1 https://github.com/Yahlawat/art-widget.git && ./art-widget/install.sh
+~/art-widget/uninstall.sh
 ```
 
-This builds the app, installs it in `~/Applications`, and starts it at login. Keep the cloned folder to run `./art-widget/uninstall.sh` later. Your painting history and cache are kept when you uninstall.
+This stops the app and moves it out of your Applications folder into `~/art-widget/_to_delete/`, along with its login entry. Nothing is deleted: empty that folder when you're sure. Your painting history and cache stay in `~/Library/Application Support/ArtWidget`.
+
+**If something goes wrong**
+
+- `Art Widget requires macOS 26 or later`: update macOS in System Settings → General → Software Update.
+- `Run xcode-select --install...`: do step 2, wait for it to finish, then repeat step 3.
+- `destination path 'art-widget' already exists`: you already downloaded it. Run `~/art-widget/install.sh` instead.
+- No card on the desktop: check `~/Library/Logs/ArtWidget.log`, or run the uninstall and install again.
 
 ## Using it
 
@@ -46,7 +81,7 @@ This builds the app, installs it in `~/Applications`, and starts it at login. Ke
 
 ## iPhone
 
-A Home Screen widget in `ios/`, medium or large: the same daily painting, ← → buttons, and a tap opens the museum's notes in the app. Pick the size by swiping in the widget gallery. Requires Xcode, [XcodeGen](https://github.com/yonaskolb/XcodeGen), and iOS 18 or later. Install XcodeGen with `brew install xcodegen` if you use Homebrew.
+The iPhone version is for developers: you build it yourself in Xcode and it needs a free Apple ID. It isn't a one-click install. A Home Screen widget in `ios/`, medium or large: the same daily painting, ← → buttons, and a tap opens the museum's notes in the app. Pick the size by swiping in the widget gallery. Requires Xcode, [XcodeGen](https://github.com/yonaskolb/XcodeGen), and iOS 18 or later. Install XcodeGen with `brew install xcodegen` if you use Homebrew.
 
 ```
 cd art-widget/ios
