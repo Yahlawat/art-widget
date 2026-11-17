@@ -25,7 +25,7 @@ A daily painting from the Art Institute of Chicago, with notes from the museum. 
 3. Paste this and press Return. It downloads the app into your home folder, builds it, and starts it:
 
    ```sh
-   cd ~ && git clone --branch v1.0.0 --depth 1 https://github.com/Yahlawat/art-widget.git && ./art-widget/install.sh
+   cd ~ && git clone --branch v1.0.1 --depth 1 https://github.com/Yahlawat/art-widget.git && ./art-widget/install.sh
    ```
 
 **What you'll see**
